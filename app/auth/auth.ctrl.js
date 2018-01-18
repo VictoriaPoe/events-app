@@ -1,21 +1,21 @@
 (function () {
-    'use strict';
+    'use strict'; 
 
     angular
         .module('main')
         .controller('AuthCtrl', AuthCtrl);
 
     function AuthCtrl(crAcl, $state, AuthService, Flash, $log) {
-        var vm = this;
+        var vm = this;              
 
         vm.login = login;
         vm.register = register;
-
+        
         vm.showRegisterForm = false;
-
+        
         vm.loginForm = null;
         vm.registerForm = null;
-
+        
         vm.credentials = {};
         vm.user = {};
 

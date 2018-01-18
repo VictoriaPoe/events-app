@@ -1,5 +1,5 @@
 (function () {
-    'use strict';
+    'use strict'; 
 
     angular
         .module('main')
@@ -40,7 +40,7 @@
 
             function failed(response) {
                 Notification.error(response.data.message);
-
+                
                 $log.error(response);
             }
 

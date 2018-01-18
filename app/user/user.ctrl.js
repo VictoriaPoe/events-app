@@ -1,5 +1,5 @@
 (function () {
-    'use strict';
+    'use strict'; 
 
     angular
         .module('main')
@@ -7,9 +7,9 @@
 
     function UserCtrl($rootScope, $scope, $state, AuthService, Flash, $log) {
         var vm = this;
-
+        
         vm.currentUser = $rootScope.globals.currentUser.metadata;
-
+        
         vm.logout = logout;
 
         function logout() {

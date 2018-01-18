@@ -3,11 +3,11 @@
 
     angular
         .module('main')
-        .service('UserService', function ($http,
-            $cookieStore,
-            $q,
-            $rootScope,
-            URL, BUCKET_SLUG, READ_KEY, WRITE_KEY) {
+        .service('UserService', function ($http, 
+                                          $cookieStore, 
+                                          $q, 
+                                          $rootScope, 
+                                          URL, BUCKET_SLUG, READ_KEY, WRITE_KEY) {
             $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
             this.getCurrentUser = function (ignoreLoadingBar) {
@@ -18,7 +18,6 @@
                     }
                 });
             };
-            
             this.getUser = function (slug, ignoreLoadingBar) {
                 return $http.get(URL + BUCKET_SLUG + '/object/' + slug, {
                     ignoreLoadingBar: ignoreLoadingBar,
@@ -35,5 +34,5 @@
                 });
             };
 
-        });
-})();
+        });  
+})();  

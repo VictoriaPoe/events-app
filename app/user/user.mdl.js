@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-
+    
     angular
         .module('user', [
             'user.profile',
@@ -10,7 +10,7 @@
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
     function config($stateProvider, $urlRouterProvider) {
-
+ 
         $stateProvider
             .state('main.user', {
                 url: 'user',
@@ -21,4 +21,4 @@
             });
     }
 })();
-            
+ 

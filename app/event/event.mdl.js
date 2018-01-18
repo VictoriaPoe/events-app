@@ -1,8 +1,8 @@
 (function () {
     'use strict';
-
+    
     angular
-        .module('event', [
+        .module('event', [ 
             'event.profile',
             'event.feed',
             'event.add'
@@ -11,7 +11,7 @@
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
     function config($stateProvider, $urlRouterProvider) {
-
+ 
         $stateProvider
             .state('main.event', {
                 url: 'events',
@@ -26,5 +26,6 @@
                 }
             });
     }
-
+    
 })();
+ 

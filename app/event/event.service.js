@@ -4,11 +4,11 @@
     angular
         .module('main')
         .service('EventService', function ($http,
-            $cookieStore,
-            $q,
-            $rootScope,
-            URL, BUCKET_SLUG, READ_KEY, WRITE_KEY, MEDIA_URL) {
-
+                                          $cookieStore, 
+                                          $q, 
+                                          $rootScope, 
+                                          URL, BUCKET_SLUG, READ_KEY, WRITE_KEY, MEDIA_URL) {
+            
             $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
             this.getEvents = function () {
@@ -47,13 +47,21 @@
             this.removeEvent = function (slug) {
                 return $http.delete(URL + BUCKET_SLUG + '/' + slug, {
                     ignoreLoadingBar: true,
-                    headers: {
+                    headers:{
                         'Content-Type': 'application/json'
                     },
                     data: {
                         write_key: WRITE_KEY
                     }
                 });
+            };
+            this.slugify = function (text) {
+              return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')           // Replace spaces with -
+                .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+                .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                .replace(/^-+/, '')             // Trim - from start of text
+                .replace(/-+$/, '');            // Trim - from end of text
             };
             this.createEvent = function (event) {
                 event.write_key = WRITE_KEY;
@@ -64,7 +72,7 @@
                 event.metafields[1].value = beginDate.getFullYear() + '-' + (beginDate.getMonth() + 1) + '-' + beginDate.getDate();
                 event.metafields[2].value = endDate.getFullYear() + '-' + (beginDate.getMonth() + 1) + '-' + endDate.getDate();
 
-                event.slug = event.title;
+                event.slug = this.slugify(event.title);
                 event.type_slug = 'events';
 
                 event.metafields[4] = {
@@ -73,10 +81,11 @@
                     object_type: "users",
                     value: $rootScope.globals.currentUser._id
                 };
+                console.log(event);
                 return $http.post(URL + BUCKET_SLUG + '/add-object', event);
             };
             this.upload = function (file) {
-                var fd = new FormData();
+                var fd = new FormData(); 
                 fd.append('media', file);
                 fd.append('write_key', WRITE_KEY);
 
@@ -84,14 +93,14 @@
 
                 var xhttp = new XMLHttpRequest();
 
-                xhttp.upload.addEventListener("progress", function (e) {
+                xhttp.upload.addEventListener("progress",function (e) {
                     defer.notify(parseInt(e.loaded * 100 / e.total));
                 });
-                xhttp.upload.addEventListener("error", function (e) {
+                xhttp.upload.addEventListener("error",function (e) {
                     defer.reject(e);
                 });
 
-                xhttp.onreadystatechange = function () {
+                xhttp.onreadystatechange = function() {
                     if (xhttp.readyState === 4) {
                         defer.resolve(JSON.parse(xhttp.response)); //Outputs a DOMString by default
                     }
@@ -100,8 +109,8 @@
                 xhttp.open("post", MEDIA_URL, true);
 
                 xhttp.send(fd);
-
+                
                 return defer.promise;
             }
         });
-})();
+})();  

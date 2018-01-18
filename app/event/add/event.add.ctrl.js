@@ -1,5 +1,5 @@
 (function () {
-    'use strict';
+    'use strict'; 
 
     angular
         .module('main')
@@ -64,9 +64,9 @@
         vm.background = {
             'background-image': 'url(' + DEFAULT_EVENT_IMAGE + ')'
         };
-
+        
         vm.flowConfig = {
-            target: MEDIA_URL,
+            target: MEDIA_URL, 
             singleFile: true
         };
 
@@ -76,7 +76,7 @@
             else
                 _createEvent(vm.event);
         }
-
+        
         function _createEvent(event) {
             function success(response) {
                 $log.info(response);

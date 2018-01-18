@@ -3,10 +3,10 @@
 
     angular
         .module('main')
-        .service('AuthService', function ($http,
-                                          $cookieStore,
-                                          $q,
-                                          $rootScope,
+        .service('AuthService', function ($http, 
+                                          $cookieStore, 
+                                          $q, 
+                                          $rootScope, 
                                           URL, BUCKET_SLUG, READ_KEY, WRITE_KEY) {
             var authService = this;
             $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -52,7 +52,7 @@
                         {
                             key: "full_name",
                             type: "text",
-                            value: user.full_name
+                            value: user.full_name 
                         },
                         {
                             key: "password",
@@ -62,7 +62,7 @@
                         {
                             key: "image",
                             type: "file",
-                            value: "3b2180f0-2c40-11e7-85ac-e98751218524-1493421969_male.png"
+                            value: "89295c10-3667-11e7-9161-61cd2f0acd2a-nopic_192.gif"
                         },
                         {
                             key: "role",
@@ -86,7 +86,7 @@
                 $rootScope.globals = {
                     currentUser: user
                 };
-
+                
                 $cookieStore.put('globals', $rootScope.globals);
             };
             authService.clearCredentials = function () {
@@ -102,5 +102,5 @@
 
                 return deferred.promise;
             };
-        });
-})();
+        });  
+})();  

@@ -1,16 +1,16 @@
 (function () {
     'use strict';
-
+    
     angular
         .module('event.add', [])
         .config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
     function config($stateProvider, $urlRouterProvider) {
-
-        $stateProvider
+ 
+        $stateProvider 
             .state('main.event.add', {
-                url: '/add',
+                url: '/add', 
                 views: {
                     '@main': {
                         templateUrl: '../views/event/event.profile.html',
@@ -22,5 +22,6 @@
                 }
             });
     }
-
+    
 })();
+ 
