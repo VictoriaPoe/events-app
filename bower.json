@@ -2,6 +2,7 @@
   "name": "events-app",
   "description": "Events App",
   "version": "0.0.0",
+  "homepage": "https://github.com/VictoriaPoe/events-app",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -31,7 +32,8 @@
     "angular-flash-alert": "^2.4.0",
     "components-font-awesome": "^4.7.0",
     "textAngular": "^1.5.16",
-    "angular-loading-bar": "^0.9.0"
+    "angular-loading-bar": "^0.9.0",
+    "angular-environment": "^1.0.8"
   },
   "resolutions": {
     "angular": "~1.4.x"
